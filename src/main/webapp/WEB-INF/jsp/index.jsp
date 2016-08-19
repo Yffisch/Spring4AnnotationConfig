@@ -60,6 +60,17 @@
                 </td>
             </tr>
         </table>
+        
+        <div ng-controller="testController">
+            <form name="testForm">
+                First Name: <input type="text" id="namnfield" name="namn" ng-model="firstName"><br>
+                Last Name: <input type="text" name="efternamn" ng-model="lastName"><br>
+                <br>
+                Full Name: {{firstName + " " + lastName}} <br>
+                Hex: {{hex}}
+            </form>
+        </div>
+        
         <script type="text/javascript" src="${cp}/resources/js/websocket.js"></script>
         <script type="text/javascript" src="${cp}/resources/js/whiteboard.js"></script>
 
@@ -69,13 +80,7 @@
         
         
         <test-directive></test-directive>
-        <div ng-controller="testController">
-            First Name: <input type="text" ng-model="firstName"><br>
-            Last Name: <input type="text" ng-model="lastName"><br>
-            <br>
-            Full Name: {{firstName + " " + lastName}} <br>
-            Hex: {{hex}}
-        </div>
+
         
         <h1>${cp} ${msg} Spring 4 Web MVC via Annotations</h1>
         <h2>${cp} ${msg} Spring 4 Web MVC via Annotations</h2>
