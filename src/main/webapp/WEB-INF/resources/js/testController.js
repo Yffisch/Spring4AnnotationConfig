@@ -5,8 +5,8 @@
  */
 
 app.controller('testController', function($scope, testService) {
-    $scope.firstName = "Kristofer";
-    $scope.lastName = "Yffén";
+    $scope.firstName = "";
+    $scope.lastName = "";
     $scope.hex = testService.myFunc(254);
 });
 

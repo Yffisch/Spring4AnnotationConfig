@@ -6,7 +6,10 @@
 
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
+var inputfield = document.testForm[0];
 canvas.addEventListener("click", defineImage, false);
+inputfield.addEventListener("input", printText, false);
+
 
 function getCurrentPos(evt) {
     var rect = canvas.getBoundingClientRect();
@@ -15,7 +18,16 @@ function getCurrentPos(evt) {
         y: evt.clientY - rect.top
     };
 }
-            
+
+function printText(evt) {
+    var wholename = document.testForm.namn;
+    var json = JSON.stringify({
+        "wholename": wholename.value
+    });   
+    drawText(json);
+    sendText(json);
+}
+
 function defineImage(evt) {
     var currentPos = getCurrentPos(evt);
     
@@ -33,9 +45,12 @@ function defineImage(evt) {
         }
     }
     
+    var wholename = document.testForm.namn;
+    
     var json = JSON.stringify({
         "shape": shape.value,
         "color": color.value,
+        "wholename": wholename.value,
         "coords": {
             "x": currentPos.x,
             "y": currentPos.y
@@ -51,6 +66,8 @@ function drawImageText(image) {
     console.log("drawImageText");
     var json = JSON.parse(image);
     context.fillStyle = json.color;
+    context.font = "30px Arial";
+    context.fillText(json.wholename,10,50);
     switch (json.shape) {
     case "circle":
         context.beginPath();
@@ -62,6 +79,14 @@ function drawImageText(image) {
         context.fillRect(json.coords.x, json.coords.y, 10, 10);
         break;
     }
+}
+
+function drawText(text) {
+    var json = JSON.parse(text);
+    console.log("drawText");
+    context.fillStyle = json.color;
+    context.font = "30px Arial";
+    context.fillText(json.wholename,10,50);
 }
 
 function drawImageBinary(blob) {
