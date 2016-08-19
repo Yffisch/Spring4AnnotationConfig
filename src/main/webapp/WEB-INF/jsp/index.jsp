@@ -38,7 +38,6 @@
                                 <td><input type="radio" name="color" value="#33CC33">Green</td>
                             </tr>
 
-                            
                             <tr>
                                 <th>Shape</th>
                                 <td><input type="radio" name="shape" value="square" checked="true">Square</td>
